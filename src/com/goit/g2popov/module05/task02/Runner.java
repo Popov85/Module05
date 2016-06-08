@@ -5,7 +5,7 @@ package com.goit.g2popov.module05.task02;
  */
 public class Runner {
         public static void main(String[] args) {
-                int sampleArray[] = {5, -1, 9 ,7 ,3 ,2 ,11 ,0 ,-7 ,6 , 10 ,9};
+                int sampleArray[] = {5, -1, 9 ,7 ,3 ,2 ,11 , 10 ,-7 ,6 , 10 ,9};
 
                 SortArray testArray = new SortArray(sampleArray);
                 int sortedArray[] = testArray.sortArray();
