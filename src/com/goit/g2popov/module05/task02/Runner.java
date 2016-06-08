@@ -9,9 +9,15 @@ public class Runner {
 
                 SortArray testArray = new SortArray(sampleArray);
                 int sortedArray[] = testArray.sortArray();
+                System.out.println("Sorted by Bubbles method array is:");
                 for (int i = 0; i<sortedArray.length; i++) {
-                        System.out.println(sortedArray[i]);
+                        System.out.print(sortedArray[i]+" ");
                 }
+                System.out.println();
+                SortArray testArray2 = new SortArray(sampleArray);
+                System.out.println("Sorted by Binary tree method array is:");
+                testArray2.sortArrayBinaryTree();
+                System.out.println();
+                System.out.println("Job is done!");
         }
-
 }

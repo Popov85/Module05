@@ -25,16 +25,15 @@ public class SortArray {
                 return this.anArray;
         }
 
-        public void formBinaryTree() {
+        // Exquisite binary tree sorting
+        public void sortArrayBinaryTree() {
                 TreeNode rootNode = initialiseRoot(0, anArray[0]);
                 int arrayLength = this.anArray.length;
                 for (int i = 1; i<arrayLength; i++) {
-                        formSubTree(i, anArray[i], rootNode);
+                        createSubTree(i, anArray[i], rootNode);
                 }
-                int min = findMinimalNode(rootNode);
-                System.out.println("Min = " + min);
-                // Launch a method to traverse the tree we have just built (rootNode);
-                //TODO
+                // Traverse through the tree
+                traverseTree(rootNode);
         }
 
         private TreeNode initialiseRoot(int id, int value) {
@@ -47,7 +46,7 @@ public class SortArray {
                 return rootNode;
         }
 
-        private void formSubTree(int arrayId, int arrayValue, TreeNode root) {
+        private void createSubTree(int arrayId, int arrayValue, TreeNode root) {
                 if (arrayValue <= root.value) {
                         if (root.left == null) {
                                 TreeNode leftNode = createNode(arrayId, arrayValue, root);
@@ -55,7 +54,7 @@ public class SortArray {
                         }
                         else {
                                 root = root.left;
-                                formSubTree(arrayId, arrayValue, root);
+                                createSubTree(arrayId, arrayValue, root);
                         }
                 }
                 else {
@@ -65,14 +64,20 @@ public class SortArray {
                         }
                         else {
                                 root = root.right;
-                                formSubTree(arrayId, arrayValue, root);
+                                createSubTree(arrayId, arrayValue, root);
                         }
                 }
         }
 
+        private void traverseTree(TreeNode node) {
+                        if (node.left != null) traverseTree(node.left);
+                        System.out.print(node.value+" ");
+                        if (node.right != null) traverseTree(node.right);
+        }
+
         private int findMinimalNode(TreeNode root) {
                 while (root.left != null) {
-                      root = root.left;
+                        root = root.left;
                 }
                 return root.value;
         }
