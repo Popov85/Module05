@@ -14,7 +14,7 @@ public class SortArray {
         public int[] sortArray () {
                 int arrayLength = this.anArray.length;
                 for (int i = arrayLength; i>0; i--) {
-                        for (int j = 1; j < i-1; j++) {
+                        for (int j = 0; j < i-1; j++) {
                                 if (anArray[j+1]<anArray[j]) {
                                         int tempVariable = anArray[j];
                                         anArray[j] = anArray[j+1];
@@ -31,6 +31,8 @@ public class SortArray {
                 for (int i = 1; i<arrayLength; i++) {
                         formSubTree(i, anArray[i], rootNode);
                 }
+                int min = findMinimalNode(rootNode);
+                System.out.println("Min = " + min);
                 // Launch a method to traverse the tree built (rootNode);
         }
 
@@ -66,6 +68,13 @@ public class SortArray {
                         }
                 }
         }
+
+        private int findMinimalNode(TreeNode root) {
+                while (root.left == null) {
+                      root = root.left;
+                }
+                return root.value;
+        }
 }
 
 class TreeNode {
@@ -74,10 +83,12 @@ class TreeNode {
         TreeNode parent;
         TreeNode left;
         TreeNode right;
+
         public TreeNode(int id, int value) {
                 this.id = id;
                 this.value = value;
         }
+
         public TreeNode(int id, int value, TreeNode parent) {
                 this.id = id;
                 this.value = value;
