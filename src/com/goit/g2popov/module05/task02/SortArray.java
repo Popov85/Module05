@@ -33,7 +33,8 @@ public class SortArray {
                 }
                 int min = findMinimalNode(rootNode);
                 System.out.println("Min = " + min);
-                // Launch a method to traverse the tree built (rootNode);
+                // Launch a method to traverse the tree we have just built (rootNode);
+                //TODO
         }
 
         private TreeNode initialiseRoot(int id, int value) {
@@ -47,7 +48,7 @@ public class SortArray {
         }
 
         private void formSubTree(int arrayId, int arrayValue, TreeNode root) {
-                if (arrayValue < root.value) {
+                if (arrayValue <= root.value) {
                         if (root.left == null) {
                                 TreeNode leftNode = createNode(arrayId, arrayValue, root);
                                 root.left = leftNode;
@@ -70,7 +71,7 @@ public class SortArray {
         }
 
         private int findMinimalNode(TreeNode root) {
-                while (root.left == null) {
+                while (root.left != null) {
                       root = root.left;
                 }
                 return root.value;
