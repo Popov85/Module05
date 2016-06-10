@@ -70,8 +70,6 @@ public class SortArray implements Sorting {
                 if (node.left != null) traverseTree(node.left);
                 anArray[counter] = node.value;
                 counter++;
-                //System.out.print(index+" [" + node.value + "] ");
-                //System.out.print(node.value+" ");
                 if (node.right != null) traverseTree(node.right);
         }
 
