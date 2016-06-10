@@ -6,6 +6,6 @@ package com.goit.g2popov.module05.task02;
  * @author  Andrii Popov
  */
 public interface Sorting {
-    int[] sortArray();
+    void sortArray();
     void sortArrayBinaryTree();
 }
