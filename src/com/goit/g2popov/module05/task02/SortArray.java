@@ -1,9 +1,12 @@
 package com.goit.g2popov.module05.task02;
 
 /**
- * Created by Андрей on 03.06.2016.
+ * Class {@code SortArray} realizes two algorithms of array sorting:
+ * 1) Bubbles sorting
+ * 2) Binary tree sorting
+ * @author Andrii Popov
  */
-public class SortArray {
+public class SortArray implements Sorting {
         private int anArray[];
 
         SortArray (int inputArray[]) {
