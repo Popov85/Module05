@@ -8,15 +8,16 @@ package com.goit.g2popov.module05.task02;
  */
 public class SortArray implements Sorting {
         private int anArray[];
+        private static int counter = 0;
 
         SortArray (int inputArray[]) {
-             this.anArray = inputArray;
+             this.anArray = inputArray.clone();
         }
 
         // Classic Bubbles sorting
-        public int[] sortArray () {
+        public void sortArray () {
                 int arrayLength = this.anArray.length;
-                for (int i = arrayLength; i>0; i--) {
+                for (int i = arrayLength; i > 0; i--) {
                         for (int j = 0; j < i-1; j++) {
                                 if (anArray[j+1]<anArray[j]) {
                                         int tempVariable = anArray[j];
@@ -25,34 +26,27 @@ public class SortArray implements Sorting {
                                 }
                         }
                 }
-                return this.anArray;
         }
 
         // Exquisite binary tree sorting
         public void sortArrayBinaryTree() {
-                TreeNode rootNode = initialiseRoot(0, anArray[0]);
+                TreeNode rootNode = createNode(0, anArray[0]);
                 int arrayLength = this.anArray.length;
                 for (int i = 1; i<arrayLength; i++) {
                         createSubTree(i, anArray[i], rootNode);
                 }
-                // Traverse through the tree
                 traverseTree(rootNode);
         }
 
-        private TreeNode initialiseRoot(int id, int value) {
+        private TreeNode createNode(int id, int value) {
                 TreeNode rootNode = new TreeNode(id, value);
-                return rootNode;
-        }
-
-        private TreeNode createNode(int id, int value, TreeNode node) {
-                TreeNode rootNode = new TreeNode(id, value, node);
                 return rootNode;
         }
 
         private void createSubTree(int arrayId, int arrayValue, TreeNode root) {
                 if (arrayValue <= root.value) {
                         if (root.left == null) {
-                                TreeNode leftNode = createNode(arrayId, arrayValue, root);
+                                TreeNode leftNode = createNode(arrayId, arrayValue);
                                 root.left = leftNode;
                         }
                         else {
@@ -62,7 +56,7 @@ public class SortArray implements Sorting {
                 }
                 else {
                         if (root.right == null) {
-                                TreeNode rightNode = createNode(arrayId, arrayValue, root);
+                                TreeNode rightNode = createNode(arrayId, arrayValue);
                                 root.right = rightNode;
                         }
                         else {
@@ -73,34 +67,32 @@ public class SortArray implements Sorting {
         }
 
         private void traverseTree(TreeNode node) {
-                        if (node.left != null) traverseTree(node.left);
-                        System.out.print(node.value+" ");
-                        if (node.right != null) traverseTree(node.right);
+                if (node.left != null) traverseTree(node.left);
+                anArray[counter] = node.value;
+                counter++;
+                //System.out.print(index+" [" + node.value + "] ");
+                //System.out.print(node.value+" ");
+                if (node.right != null) traverseTree(node.right);
         }
 
-        private int findMinimalNode(TreeNode root) {
-                while (root.left != null) {
-                        root = root.left;
+        @Override
+        public String toString() {
+                String arrayString = "";
+                for (int i = 0; i<anArray.length; i++) {
+                        arrayString = arrayString + anArray[i]+" ";
                 }
-                return root.value;
+                return arrayString;
         }
 }
 
 class TreeNode {
         int id;
         int value;
-        TreeNode parent;
         TreeNode left;
         TreeNode right;
 
         public TreeNode(int id, int value) {
                 this.id = id;
                 this.value = value;
-        }
-
-        public TreeNode(int id, int value, TreeNode parent) {
-                this.id = id;
-                this.value = value;
-                this.parent = parent;
         }
 }
