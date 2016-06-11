@@ -15,9 +15,7 @@ public class Runner {
                 System.out.println("Sorted by Bubbles method array is:");
                 System.out.println(testArray.toString());
 
-                int sampleArray2[] = {5, -1, 9 ,7 ,3 ,2 ,11 ,0 ,-7 ,6 , 10 ,9};
-                SortArray testArray2 = new SortArray(sampleArray2);
-
+                SortArray testArray2 = new SortArray(sampleArray);
                 System.out.println("Initial array is:");
                 System.out.print(testArray2.toString());
                 System.out.println();

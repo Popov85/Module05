@@ -11,7 +11,7 @@ public class SortArray implements Sorting {
         private static int counter = 0;
 
         SortArray (int inputArray[]) {
-             this.anArray = inputArray;
+             this.anArray = inputArray.clone();
         }
 
         // Classic Bubbles sorting
