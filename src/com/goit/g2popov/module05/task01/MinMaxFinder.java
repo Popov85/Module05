@@ -1,14 +1,24 @@
 package com.goit.g2popov.module05.task01;
 
 /**
- * Created by Андрей on 01.06.2016.
+ * Class {@code MinMaxFinder} realizes two algorithms of finding:
+ * min and max elements of an array:
+ * @author Andrii Popov
  */
+
 public class MinMaxFinder {
+
+        // Actual array
         private int intArray[];
+
         MinMaxFinder(int intArray[]) {
               this.intArray = intArray;
         }
 
+        /**
+         * Finds minimal element of the array
+         * @return min element
+         */
         public int getMinimalNumber() {
                 int minimum = intArray[0];
                 for (int i = 1; i<intArray.length; i++) {
@@ -19,6 +29,10 @@ public class MinMaxFinder {
                 return minimum;
         }
 
+        /**
+         * Finds the maximal element of the array
+         * @return max element
+         */
         public int getMaximalNumber() {
                 int maximum = intArray[0];
                 for (int i = 1; i<intArray.length; i++) {
@@ -29,4 +43,12 @@ public class MinMaxFinder {
                 return maximum;
         }
 
+        @Override
+        public String toString() {
+                String arrayString = "";
+                for (int i = 0; i<intArray.length; i++) {
+                        arrayString = arrayString + intArray[i]+" ";
+                }
+                return arrayString;
+        }
 }
